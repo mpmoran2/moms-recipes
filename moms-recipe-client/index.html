@@ -2,9 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Recipe</title>
+    <title>Mom's Kitchen</title>
     <style>
-        .createGetFood {
+        .button {
           padding: 15px 25px;
           font-size: 24px;
           text-align: center;
@@ -17,11 +17,11 @@
           box-shadow: 0 9px #999;
         }
         
-        .createGetFood:hover {
+        .button:hover {
             color: rgb(0, 0, 0);
             background-color:  #c8ace7}
         
-        .createGetFood:active {
+        .button:active {
           background-color: #c8ace7;
           box-shadow: 0 5px #666;
           transform: translateY(4px);
@@ -29,8 +29,9 @@
     </style>    
 </head>
 <body>
-    <button class="createGetFood">Cook Like Mom</button>
+    <button id="createGetFood" class="button">Cook Like Mom</button>
     <div id="getFood"></div>
+    <script src="src/recipe.js"></script>
     <script src="src/appContainer.js"></script>
     <script src="src/index.js"></script>
 </body>
