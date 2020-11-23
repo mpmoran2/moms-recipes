@@ -16,14 +16,14 @@ class AppContainer {
         let randomRecipes = [];        
         for (let i = 0; i < 1; i++) {
             randomRecipes.push(AppContainer.recipes[Math.floor(Math.random()*AppContainer.recipes.length)]);
-        };        
+        };      
         new CookFood(randomRecipes);   
         const cookFoodDiv = document.getElementById('cookFood');
         AppContainer.cookFood.recipes.forEach(cookFood => {
             const recipeDiv = document.createElement('div');
             recipeDiv.innerText = cookFood.name;
             cookFoodDiv.appendChild(recipeDiv);
-        })    
+        })
     };
 
     getRecipes() {
@@ -32,7 +32,7 @@ class AppContainer {
         .then(data =>{ 
             console.log(data)
             data.forEach(recipe => {                
-                new Recipe(recipe.name, recipe.category)
+                new Recipe(recipe.id, recipe.name, recipe.category)
                 console.log(AppContainer.recipes)
             }); 
             this.renderRecipes();           
