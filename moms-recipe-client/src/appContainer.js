@@ -9,8 +9,17 @@ class AppContainer {
 
     bindEventListeners() {
         const btn = document.getElementById('createCookFood');    
-        btn.addEventListener('click', this.getRandomRecipes)            
+        btn.addEventListener('click', this.getRandomRecipes)
+        
+        const newRecipeForm = document.getElementById('newRecipe');
+        newRecipeForm.addEventListener('submit', this.createRecipe);
     };
+
+    createRecipe(event) {
+        event.preventDefault();
+
+        fetch('')
+    }
 
     getRandomRecipes() {
         let randomRecipes = [];        
@@ -24,6 +33,12 @@ class AppContainer {
             recipeDiv.innerText = cookFood.name;
             cookFoodDiv.appendChild(recipeDiv);
         })
+            fetch(`http://localhost:3000/recipes/${randomRecipes[0].id}`, {
+                method: 'DELETE'
+            })
+            .then(resp => resp.json)
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
     };
 
     getRecipes() {
@@ -32,13 +47,11 @@ class AppContainer {
         .then(data =>{ 
             console.log(data)
             data.forEach(recipe => {                
-                new Recipe(recipe.id, recipe.name, recipe.category)
-                console.log(AppContainer.recipes)
+                new Recipe(recipe.id, recipe.name, recipe.category)                
             }); 
             this.renderRecipes();           
         })
-        .catch(err => alert(err));
-        console.log(AppContainer.recipes)
+        .catch(err => alert(err));        
     };
 
     renderRecipes() {

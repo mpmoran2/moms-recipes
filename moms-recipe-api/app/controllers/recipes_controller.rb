@@ -6,7 +6,15 @@ class RecipesController < ApplicationController
 
     def destroy
         Recipe.find(params[:id]).destroy
-        render :json => {id: params[:id]}
+        render :json => {id: params[:id], message: "Record was successfully deleted."}
+        
+
+
+        # if Recipe.destroy
+        #     render :json => {id: params[:id], message: "Record was successfully deleted."}
+        # else 
+        #     render :json => {message: "Error!"}
+        # end
     end
     
 end
