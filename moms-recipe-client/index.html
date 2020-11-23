@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mom's Kitchen</title>
-    <style>
+    <!-- <style>
         .button {
           padding: 15px 25px;
           font-size: 24px;
@@ -26,11 +26,19 @@
           box-shadow: 0 5px #666;
           transform: translateY(4px);
         }
-    </style>    
+    </style>     -->
 </head>
-<body>
-    <button id="createGetFood" class="button">Cook Like Mom</button>
-    <div id="getFood"></div>
+<body>  
+    
+    <button class="button" id="createCookFood" >What Shall We Cook?</button>    
+    <br><br>
+    <label for="repi">Today We'll Cook</label>
+    <select name="" id='repi'></select>
+    
+    <div id="cookFood"></div> 
+    
+    
+    <script src="src/cookFood.js"></script>
     <script src="src/recipe.js"></script>
     <script src="src/appContainer.js"></script>
     <script src="src/index.js"></script>

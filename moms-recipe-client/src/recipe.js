@@ -1,6 +1,10 @@
 class Recipe {
-    constructor(name){
+    constructor(name, category){
         this.name = name;
-        AppContainer.recipies.push(this);
+        // this.memory = memory;
+        this.category = category;
+        // this.ingredient = ingredient;
+        // this.direction = direction;
+        AppContainer.recipes.push(this);
     }
 }

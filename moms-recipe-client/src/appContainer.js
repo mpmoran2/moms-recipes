@@ -1,38 +1,53 @@
 class AppContainer {
-    static recipes = []
-    categories = []
-    url = "http://localhost:3000"
-    getFood = []
+    static recipes = [];
+    categories = [];
+    ingredients = [];
+    directions = [];
+
+    url = "http://localhost:3000";
+    cookFood = {};
 
     bindEventListeners() {
-        const btn = document.getElementById('createGetFood');    
-        btn.addEventListener('click', this.getRandomRecipies)            
+        const btn = document.getElementById('createCookFood');    
+        btn.addEventListener('click', this.getRandomRecipes)            
     };
 
     getRandomRecipes() {
-        debugger
-        let randomRecipes = [];
-        for (let i = 0; i < 2; i++) {
+        let randomRecipes = [];        
+        for (let i = 0; i < 1; i++) {
             randomRecipes.push(AppContainer.recipes[Math.floor(Math.random()*AppContainer.recipes.length)]);
-        };
-        return randomRecipes;
+        };        
+        new CookFood(randomRecipes);   
+        const cookFoodDiv = document.getElementById('cookFood');
+        AppContainer.cookFood.recipes.forEach(cookFood => {
+            const recipeDiv = document.createElement('div');
+            recipeDiv.innerText = cookFood.name;
+            cookFoodDiv.appendChild(recipeDiv);
+        })    
     };
 
     getRecipes() {
-        console.log('beep beep Imma sheep')
         fetch(this.url + '/recipes')
         .then(resp => resp.json())
-        .then(data => {
-            data.forEach(recipe => {
-                new Recipe(recipe.name)
-            })
-            
+        .then(data =>{ 
+            console.log(data)
+            data.forEach(recipe => {                
+                new Recipe(recipe.name, recipe.category)
+                console.log(AppContainer.recipes)
+            }); 
+            this.renderRecipes();           
         })
-        //call render
-        .catch(err => alert(err))
+        .catch(err => alert(err));
+        console.log(AppContainer.recipes)
     };
 
-    renderHabits() {
-        //create DOM nodes to render in DOM
+    renderRecipes() {
+        const repi = document.getElementById('repi');
+        AppContainer.recipes.forEach(recipe => {
+            const option = document.createElement('option');
+            option.innerText = recipe.name;
+            repi.appendChild(option);
+        })
+        document.body.appendChild(repi);
     };
 }
