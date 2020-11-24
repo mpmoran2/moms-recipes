@@ -1,24 +1,42 @@
+
+
 class AppContainer {
     static recipes = [];
-    categories = [];
+    static categories = [];
     ingredients = [];
     directions = [];
 
     url = "http://localhost:3000";
-    cookFood = {};
+    static cookFood = {};
 
     bindEventListeners() {
         const btn = document.getElementById('createCookFood');    
         btn.addEventListener('click', this.getRandomRecipes)
         
         const newRecipeForm = document.getElementById('newRecipe');
-        newRecipeForm.addEventListener('submit', this.createRecipe);
+        newRecipeForm.addEventListener('submit', () => this.createRecipe(event));
     };
 
     createRecipe(event) {
         event.preventDefault();
-
-        fetch('')
+        // const form = document.getElementById('newRecipe')
+        // const catSelect = event.target.children[2]
+        const data = event.target;
+        console.log(this)
+        fetch(`${this.url}/recipes`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+               name: data.recipeInput.value,
+               category: data.children[2].value
+            })
+        })
+        .then(resp => resp.json)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
     }
 
     getRandomRecipes() {
