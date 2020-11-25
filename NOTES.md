@@ -7,7 +7,7 @@ family-recipe
             index.js
             recipe.js => class 
             category.js => class 
-            randomRecipe.js => class 
+            cookFood.js => class 
             appContainer.js => class 
 
     

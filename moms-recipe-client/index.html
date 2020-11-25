@@ -3,55 +3,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mom's Kitchen</title>
-    <!-- <style>
-        .button {
-          padding: 15px 25px;
-          font-size: 24px;
-          text-align: center;
-          cursor: pointer;
-          outline: none;
-          color: #fff;
-          background-color: #5a09a5;
-          border: none;
-          border-radius: 15px;
-          box-shadow: 0 9px #999;
-        }
+    <style>* {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+    }
+
+    p {
+      text-align: center;
+      color: white;
+    }
+
+    form {
+      text-align: center;
+      color: white;
+    }    
+
+    h4 {
+      text-align: center;
+      color: white;
+    }
+    
+    .recipeForm {
+      border-top-style: solid;
+      border-bottom-style: solid;
+      padding-bottom: 10px;
+    }
+
+    .collected {
+      border-top-style: solid;
+      padding-top: 15px;
+    }
+
+    .cooking {
+    border: 2px solid rgb(209, 167, 243);
+    border-radius: 5px;
+    }
+
+    /* Style the side navigation */
+    .sidenav {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgb(52, 20, 78);
+      color: white;
+      overflow-x: hidden;
+    }    
+    
+    /* Side navigation links */
+    .sidenav a {
+      color: white;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    /* Change color on hover */
+    .sidenav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    /* Style the content */
+    .content {
+      text-align: center;
+      margin-left: 200px;
+      padding-left: 20px;
+    }
+
+    /* What Shall We Cook Button */
+    .button {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #3b076b;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    }
         
-        .button:hover {
-            color: rgb(0, 0, 0);
-            background-color:  #c8ace7}
+    .button:hover {
+    color: rgb(0, 0, 0);
+    background-color:  #c8ace7;
+    }
         
-        .button:active {
-          background-color: #c8ace7;
-          box-shadow: 0 5px #666;
-          transform: translateY(4px);
-        }
-    </style>     -->
+    .button:active {
+    background-color: #c8ace7;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    }   
+    </style>
+    
 </head>
 <body>  
-    
-    <button class="button" id="createCookFood" >What Shall We Cook?</button>    
-    <br><br>
-    <label for="repi">Today We'll Cook</label>
-    <select name="" id='repi'></select>
-    <div id="cookFood"></div> 
 
-    <form id="newRecipe">
-      <label for="">New Recipe</label>
-      <input type="text" name="recipeInput">
-      <select name="categorySelect" id="">
-        <option value="Soup">Soup</option>
-        <option value="Stew">Stew</option>
-        <option value="Rice Bowl">Rice Bowl</option>
-        <option></option>
-      </select>
-      <input type="submit">
-    </form>
+  <div class="sidenav">
+    <h1>Mom's Kitchen<h1></h1>
+    <p>In memory of my mother and the memories connected to her cooking so that she may live on</p>
+    <h4 class="collected">Recipes Collected:</h4>
+      <ul id="repi"></ul>
     
+    <br>
+    <form class="recipeForm" id="newRecipe">
+      <h4>Remember a dish Mama made for you?</h4>
+      <label for="recipeInput">New Recipe</label>
+        <input type="text" name="recipeInput"><br>
+      <label for="categorySelect">Type of Dish</label><br>
+        <select name="categorySelect" id="">
+          <option value="Soup Dish">Soup Dish</option>
+          <option value="Stew Dish">Stew Dish</option>
+          <option value="Rice Dish">Rice Dish</option>
+          <option value="Noodle Dish">Noodle Dish</option>
+          <option value="Meat Dish">Meat Dish</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Snack">Snack</option>
+      </select><br>
+      <label for="directionInput">Directions</label><br>
+      <textarea name="directionInput" form="newRecipe">How to make it?</textarea>
+      <br><br>
+      <label for="memoryInput">Memory</label><br>
+      <textarea name="memoryInput" form="newRecipe">What memory do you have of her with this food?</textarea>
+      <br><br>
+
+      <input type="submit">
+    </form>   
+  </div>
+
+  <div class="content">    
+    <br>
+    <button class="button" id="createCookFood" >What Shall We Cook?</button>    
+    <br>
+    
+    <h2>🌸 Today We'll Cook 🌸</h1>
+    
+    <div id="cookFood"></div>  
+    <div id="foodItems"></div>
+    <div id="howTo"></div>   
+    
+  </div>
     
     <script src="src/cookFood.js"></script>
     <script src="src/recipe.js"></script>
     <script src="src/appContainer.js"></script>
     <script src="src/index.js"></script>
 </body>
+
 </html>

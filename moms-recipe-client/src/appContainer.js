@@ -1,11 +1,7 @@
-
-
 class AppContainer {
     static recipes = [];
     static categories = [];
-    ingredients = [];
-    directions = [];
-
+    static ingredients = [];
     url = "http://localhost:3000";
     static cookFood = {};
 
@@ -14,13 +10,11 @@ class AppContainer {
         btn.addEventListener('click', this.getRandomRecipes)
         
         const newRecipeForm = document.getElementById('newRecipe');
-        newRecipeForm.addEventListener('submit', () => this.createRecipe(event));
+        newRecipeForm.addEventListener('submit', () => this.addRecipe(event));
     };
 
-    createRecipe(event) {
+    addRecipe(event) {        
         event.preventDefault();
-        // const form = document.getElementById('newRecipe')
-        // const catSelect = event.target.children[2]
         const data = event.target;
         console.log(this)
         fetch(`${this.url}/recipes`, {
@@ -30,55 +24,100 @@ class AppContainer {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-               name: data.recipeInput.value,
-               category: data.children[2].value
+                name: data.recipeInput.value,
+                category: data.categorySelect.value,
+                memory: data.memoryInput.value,
+                directions: data.directionInput.value,
             })
         })
-        .then(resp => resp.json)
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+        .then(resp => resp.json())
+        .then(data => {
+            const { id, name, category, directions, memory } = data;
+            new Recipe(id, name, category, directions, memory);
+            this.renderRecipes();
+        })        
+        .catch(err => console.log(err))
     }
 
     getRandomRecipes() {
         let randomRecipes = [];        
         for (let i = 0; i < 1; i++) {
             randomRecipes.push(AppContainer.recipes[Math.floor(Math.random()*AppContainer.recipes.length)]);
-        };      
+        }; 
         new CookFood(randomRecipes);   
         const cookFoodDiv = document.getElementById('cookFood');
+        cookFoodDiv.innerHTML = ""
         AppContainer.cookFood.recipes.forEach(cookFood => {
             const recipeDiv = document.createElement('div');
-            recipeDiv.innerText = cookFood.name;
+            const recipeH2 = document.createElement('h2');
+            recipeH2.innerText = cookFood.name;
+            recipeDiv.innerText = cookFood.category.name;              
+            recipeDiv.appendChild(recipeH2); 
+            cookFoodDiv.appendChild(recipeH2);   
             cookFoodDiv.appendChild(recipeDiv);
-        })
-            fetch(`http://localhost:3000/recipes/${randomRecipes[0].id}`, {
-                method: 'DELETE'
-            })
-            .then(resp => resp.json)
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
+        });  
+        // randomRecipes.forEach(recipe => {  
+        //     fetch(`http://localhost:3000/recipes/${recipes].id}`, {
+        //         method: 'DELETE'
+        //     })
+        //     .then(resp => resp.json)
+        //     .then(data => {
+        //          console.log(data);
+        //          Recipe.delete(data.id)
+        //          this.renderRecipes();
+        //      })
+        //      .catch(err => console.log(err))
+        // })
     };
-
+    
     getRecipes() {
         fetch(this.url + '/recipes')
         .then(resp => resp.json())
         .then(data =>{ 
             console.log(data)
-            data.forEach(recipe => {                
-                new Recipe(recipe.id, recipe.name, recipe.category)                
+            data.forEach(recipe=> {                
+                new Recipe(recipe.id, recipe.name, recipe.category, recipe.memory, recipe.directions) 
             }); 
             this.renderRecipes();           
         })
         .catch(err => alert(err));        
     };
 
-    renderRecipes() {
+    renderRecipes() {       
         const repi = document.getElementById('repi');
-        AppContainer.recipes.forEach(recipe => {
-            const option = document.createElement('option');
-            option.innerText = recipe.name;
-            repi.appendChild(option);
+        repi.innerHTML = ""
+        AppContainer.recipes.forEach(recipe => {            
+            const repiLi = document.createElement('li');            
+            repiLi.innerText = recipe.name;            
+            repi.appendChild(repiLi);
+            // repiLi.innerHTML = "";
         })
-        document.body.appendChild(repi);
-    };
+    };   
+    
+    getIngredients() {
+        fetch(this.url + '/recipes/:recipe_id/ingredients') 
+        .then(resp => resp.json())
+        .then(data =>{ 
+            console.log(data)
+            data.forEach(ingredient=> {                
+                new Ingredient(ingredient.id, ingredient.name, ingredient.amount, ingredient.recipe_id)
+            });
+            // this.renderIngredients();  
+        });        
+    }
+    
+    // renderIngredients() {
+        //     const ingri = document.createElement('ul');
+        //     AppContainer.ingredients.forEach(ingredient => {
+            //         const itemLi = document.createElement('li');
+            //         itemLi.innerText = ingredient.amount + " " + ingredient.name;            
+            //         ingri.appendChild(repiLi);
+            //     })
+            // };
+
+            
+            
 }
+        
+    
+        
