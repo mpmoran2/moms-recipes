@@ -19,7 +19,6 @@
 
     p {
       text-align: center;
-      color: white;
     }
 
     form {
@@ -51,7 +50,7 @@
     /* Style the side navigation */
     .sidenav {
       height: 100%;
-      width: 250px;
+      width: 300px;
       position: fixed;
       z-index: 1;
       top: 0;
@@ -78,10 +77,10 @@
     /* Style the content */
     .content {
       text-align: center;
-      margin-left: 200px;
-      padding-left: 20px;
+      margin-left: 250px;
+      padding-left: 60px;
     }
-
+    
     /* What Shall We Cook Button */
     .button {
     padding: 15px 25px;
@@ -115,13 +114,15 @@
     <h1>Mom's Kitchen<h1></h1>
     <p>In memory of my mother and the memories connected to her cooking so that she may live on</p>
     <h4 class="collected">Recipes Collected:</h4>
-      <ul id="repi"></ul>
+      <ol id="repi"></ol>
     
     <br>
     <form class="recipeForm" id="newRecipe">
       <h4>Remember a dish Mama made for you?</h4>
-      <label for="recipeInput">New Recipe</label>
+      <label for="recipeInput">New Recipe</label><br>
         <input type="text" name="recipeInput"><br>
+      <label for="memoryInput">Memory</label><br>
+      <textarea name="memoryInput" form="newRecipe">What memory do you have of her with this food?</textarea><br>
       <label for="categorySelect">Type of Dish</label><br>
         <select name="categorySelect" id="">
           <option value="Soup Dish">Soup Dish</option>
@@ -131,16 +132,32 @@
           <option value="Meat Dish">Meat Dish</option>
           <option value="Dessert">Dessert</option>
           <option value="Snack">Snack</option>
-      </select><br>
+      </select><br><br>      
       <label for="directionInput">Directions</label><br>
       <textarea name="directionInput" form="newRecipe">How to make it?</textarea>
-      <br><br>
-      <label for="memoryInput">Memory</label><br>
-      <textarea name="memoryInput" form="newRecipe">What memory do you have of her with this food?</textarea>
-      <br><br>
-
+      <br><br>      
       <input type="submit">
     </form>   
+    <form class="ingredientsForm" id="newIngredients">
+      <h4>What are the ingredients?</h4>
+      <label>Recipe</label>
+      <select id=recipeSelect> Recipe Select</select><br><br> 
+      <label for="ingredientInput">Ingredients</label><br>
+        <input type="text" name="ingredientInput1">
+        <input type="text" name="ingredientInput2">
+        <input type="text" name="ingredientInput3">
+        <input type="text" name="ingredientInput4">
+        <input type="text" name="ingredientInput5">
+        <input type="text" name="ingredientInput6">
+        <input type="text" name="ingredientInput7">
+        <input type="text" name="ingredientInput8">
+        <input type="text" name="ingredientInput9">
+        <input type="text" name="ingredientInput10">
+        <input type="text" name="ingredientInput11">
+        <input type="text" name="ingredientInput12">
+        <br><br>
+        <input type="submit">
+    </form>
   </div>
 
   <div class="content">    
@@ -150,14 +167,21 @@
     
     <h2>🌸 Today We'll Cook 🌸</h1>
     
-    <div id="cookFood"></div>  
+    <div class="cookName" id="cookFood"></div>  
     <div id="foodItems"></div>
-    <div id="howTo"></div>   
+    <div id="howTo">
+      
+    </div>   
     
   </div>
-    
+    <script src="src/AppListener.js"></script>
+    <script src="src/RecipeAdaptor.js"></script>
+    <script src="src/IngredientAdaptor.js"></script>
+    <script src="src/category.js"></script>
     <script src="src/cookFood.js"></script>
+    <script src="src/foodItems.js"></script>
     <script src="src/recipe.js"></script>
+    <script src="src/ingredient.js"></script>
     <script src="src/appContainer.js"></script>
     <script src="src/index.js"></script>
 </body>

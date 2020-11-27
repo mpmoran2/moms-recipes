@@ -4,6 +4,7 @@ class FoodItems{
         AppContainer.foodItems = this;
     }
 }
-        this.directions = directions;
+
+
 
         

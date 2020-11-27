@@ -1,18 +1,15 @@
 class RecipesController < ApplicationController
 
     def index
-        render :json => Recipe.all, :include => :category; :ingredients
+        render :json => Recipe.all, :include => :category; 
     end
 
     def create
         # binding.pry
         category = Category.find_by(name: params[:category])
         memory = Recipe.create(memory: params[:memory])
-        # ingredients = Ingredient.create(id: params[:id])
         directions = Recipe.create(directions: params[:directions])        
         recipe = Recipe.create(name: params[:name], category: category, memory: memory, directions: directions)
-        
-        # render :json => recipe, :status => 201
         render :json => recipe, :include => :category, :status => 201
     end
     
