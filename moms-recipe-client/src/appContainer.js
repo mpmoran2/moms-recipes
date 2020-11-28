@@ -72,7 +72,8 @@ class AppContainer {
             this.renderIngredients();
         })        
         .catch(err => console.log(err));
-        alert("Ingredients added succesfully")
+        alert("Ingredients added succesfully");
+        location.reload();
     };
 
     getRandomRecipes() {
@@ -118,7 +119,7 @@ class AppContainer {
     static getRecipeIngredients(id) {       
         let food = Ingredient.byRecipe(id)
         const foodItemsDiv = document.getElementById('cookFood').querySelector('h3');
-        // foodItemsDiv.innerHTML = "";
+        foodItemsDiv.innerHTML = "";
         food.forEach(foodItems => {
             console.log("foodItems", foodItems)
             const ingredientsDiv = document.createElement('div');
