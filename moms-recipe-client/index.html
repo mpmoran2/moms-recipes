@@ -3,109 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mom's Kitchen</title>
-    <style>* {
-      box-sizing: border-box;
-    }
+    <link rel="stylesheet" href="index.css">
     
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    h1 {
-      text-align: center;
-      color: white;
-    }
-
-    p {
-      text-align: center;
-    }
-
-    form {
-      text-align: center;
-      color: white;
-    }    
-
-    h4 {
-      text-align: center;
-      color: white;
-    }
-    
-    .recipeForm {
-      border-top-style: solid;
-      border-bottom-style: solid;
-      padding-bottom: 10px;
-    }
-
-    .collected {
-      border-top-style: solid;
-      padding-top: 15px;
-    }
-
-    .cooking {
-    border: 2px solid rgb(209, 167, 243);
-    border-radius: 5px;
-    }
-
-    /* Style the side navigation */
-    .sidenav {
-      height: 100%;
-      width: 300px;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: rgb(52, 20, 78);
-      color: white;
-      overflow-x: hidden;
-    }    
-    
-    /* Side navigation links */
-    .sidenav a {
-      color: white;
-      padding: 16px;
-      text-decoration: none;
-      display: block;
-    }
-    
-    /* Change color on hover */
-    .sidenav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-    
-    /* Style the content */
-    .content {
-      text-align: center;
-      margin-left: 250px;
-      padding-left: 60px;
-    }
-    
-    /* What Shall We Cook Button */
-    .button {
-    padding: 15px 25px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #3b076b;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    }
-        
-    .button:hover {
-    color: rgb(0, 0, 0);
-    background-color:  #c8ace7;
-    }
-        
-    .button:active {
-    background-color: #c8ace7;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-    }   
-    </style>
     
 </head>
 <body>  
@@ -124,7 +23,7 @@
       <label for="memoryInput">Memory</label><br>
       <textarea name="memoryInput" form="newRecipe">What memory do you have of her with this food?</textarea><br>
       <label for="categorySelect">Type of Dish</label><br>
-        <select name="categorySelect" id="">
+        <select id="categorySelect">
           <option value="Soup Dish">Soup Dish</option>
           <option value="Stew Dish">Stew Dish</option>
           <option value="Rice Dish">Rice Dish</option>
@@ -169,14 +68,9 @@
     
     <div class="cookName" id="cookFood"></div>  
     <div id="foodItems"></div>
-    <div id="howTo">
-      
-    </div>   
-    
+          
   </div>
-    <script src="src/AppListener.js"></script>
-    <script src="src/RecipeAdaptor.js"></script>
-    <script src="src/IngredientAdaptor.js"></script>
+   
     <script src="src/category.js"></script>
     <script src="src/cookFood.js"></script>
     <script src="src/foodItems.js"></script>

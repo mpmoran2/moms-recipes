@@ -8,11 +8,4 @@ class Recipe {
         AppContainer.recipes.push(this);
     }
     
-    // get Category return category name through category_id
-
-    // getIngredients return ingredients name through ingredient_id
-    
-    // static delete(recipeId) {
-    //     AppContainer.recipes = AppContainer.recipes.filter(recipe => parseInt(recipeId) !== recipe.id);
-    // }
 }
