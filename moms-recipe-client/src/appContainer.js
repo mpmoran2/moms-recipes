@@ -26,7 +26,7 @@ class AppContainer {
         let recipeSearch = AppContainer.recipes; 
         if (recipeSearch !== searchBar) {   
             console.log(search[0])   
-            debugger                               
+            // debugger                               
         };
            
     };  
