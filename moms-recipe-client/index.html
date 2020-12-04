@@ -12,8 +12,15 @@
   <div class="sidenav">
     <h1>Mom's Kitchen<h1></h1>
     <p>In memory of my mother and the memories connected to her cooking so that she may live on</p>
+    
+
     <h4 class="collected">Recipes Collected:</h4>
       <ol id="repi"></ol>
+      <form class="recipeForm" id="aRecipe"> 
+        <label for="findMe">I Want To Cook: </label>    
+        <input type="search" id="findMe" name="findMe">
+        <input type="submit">
+      </form>      
     
     <br>
     <form class="recipeForm" id="newRecipe">
@@ -59,7 +66,8 @@
     </form>
   </div>
 
-  <div class="content">    
+  <div class="content">  
+    
     <br>
     <button class="button" id="createCookFood" >What Shall We Cook?</button>    
     <br>
@@ -72,6 +80,7 @@
   </div>
    
     <script src="src/category.js"></script>
+    
     <script src="src/cookFood.js"></script>
     <script src="src/foodItems.js"></script>
     <script src="src/recipe.js"></script>

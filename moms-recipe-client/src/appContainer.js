@@ -14,6 +14,21 @@ class AppContainer {
         
         const newIngredientsForm = document.getElementById('newIngredients');
         newIngredientsForm.addEventListener('submit', () => this.addIngredients(event));
+
+        const findRecipeForm = document.getElementById('aRecipe');
+        findRecipeForm.addEventListener('submit', () => this.findRecipe(event));
+    };  
+
+    findRecipe(event) {
+        event.preventDefault();
+        const searchBar = event.target.findMe.value
+        let search = Recipe.byName(searchBar);
+        let recipeSearch = AppContainer.recipes; 
+        if (recipeSearch !== searchBar) {   
+            console.log(search[0])   
+            debugger                               
+        };
+           
     };  
     
     addRecipe(event) {        
@@ -78,10 +93,10 @@ class AppContainer {
 
     getRandomRecipes() {
         let randomRecipes = [];  
-        // let randomIngredients = [];
         for (let i = 0; i < 1; i++) {
             randomRecipes.push(AppContainer.recipes[Math.floor(Math.random()*AppContainer.recipes.length)]);
         }; 
+        debugger
         new CookFood(randomRecipes);   
         const cookFoodDiv = document.getElementById('cookFood');
         cookFoodDiv.innerHTML = ""
@@ -100,7 +115,6 @@ class AppContainer {
             memoryH5.innerText = cookFood.memory;
             
             itemH3.innerText = "Ingredients";
-            //ingredients list; 
             directionsH3.innerText = "Directions";
             directionsDiv.innerText = cookFood.directions;   
             cookFoodDiv.appendChild(recipeH2);   

@@ -8,4 +8,7 @@ class Recipe {
         AppContainer.recipes.push(this);
     }
     
+    static byName(recipeName) {
+        return AppContainer.recipes.filter(recipe => recipe.name === recipeName)
+    }
 }
