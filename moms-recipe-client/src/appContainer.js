@@ -26,10 +26,39 @@ class AppContainer {
         let recipeSearch = AppContainer.recipes; 
         if (recipeSearch !== searchBar) {   
             console.log(search[0])   
+
+            new CookFood(search);   
+            const cookFoodDiv = document.getElementById('cookFood');
+            cookFoodDiv.innerHTML = ""
+            const recipeDiv = document.createElement('div');
+            const recipeH2 = document.createElement('h2');
+            const memoryH5 = document.createElement('h5');
+            const ingredientsDiv = document.createElement('div')
+            const itemH3 = document.createElement('h3');
+            const directionsDiv = document.createElement('div')
+            const directionsH3 = document.createElement('h3');
+
+
+            recipeH2.innerText = search[0].name;
+            recipeDiv.innerText = search[0].category.name;   
+            memoryH5.innerText = search[0].memory;
+            
+            itemH3.innerText = "Ingredients";
+            directionsH3.innerText = "Directions";
+            directionsDiv.innerText = search[0].directions;   
+            cookFoodDiv.appendChild(recipeH2);   
+            cookFoodDiv.appendChild(recipeDiv);
+            recipeDiv.appendChild(memoryH5);
+            recipeDiv.appendChild(ingredientsDiv);
+            ingredientsDiv.appendChild(itemH3)
+            ingredientsDiv.appendChild(directionsH3);
+            ingredientsDiv.appendChild(directionsDiv);
+
+            AppContainer.getRecipeIngredients(search[0].id);            
             // debugger                               
-        };
-           
+        };        
     };  
+
     
     addRecipe(event) {        
         event.preventDefault();
